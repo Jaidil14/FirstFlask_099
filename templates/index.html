@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pendaftaran Member Gym</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulir Pendaftaran Member Gym</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="umur">Umur:</label>
+                <input type="number" id="umur" name="umur" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="berat_badan">Berat Badan (kg):</label>
+                <input type="number" id="berat_badan" name="berat_badan" step="0.1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tinggi_badan">Tinggi Badan (cm):</label>
+                <input type="number" id="tinggi_badan" name="tinggi_badan" required>
+            </div>
+            
+            <button type="submit">Daftar Member</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Hasil Pendaftaran</h2>
+            <p><strong>Nama:</strong> {{ result.nama }}</p>
+            <p><strong>Umur:</strong> {{ result.umur }} tahun</p>
+            <p><strong>Berat Badan:</strong> {{ result.berat_badan }} kg</p>
+            <p><strong>Tinggi Badan:</strong> {{ result.tinggi_badan }} cm</p>
+            <p><strong>BMI:</strong> {{ result.bmi }}</p>
+            <p><strong>Kategori BMI:</strong> {{ result.kategori_bmi }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
